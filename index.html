@@ -145,6 +145,26 @@ section{padding:96px 0}
 .lb-next{right:16px;top:50%;transform:translateY(-50%)}
 @media (max-width:640px){.lb img{max-width:100vw;max-height:78vh;border-radius:0}.lb-prev,.lb-next{top:auto;bottom:18px;transform:none}.lb-prev{left:calc(50% - 70px)}.lb-next{right:calc(50% - 70px)}}
 html.lb-open{overflow:hidden}
+/* reviews (work/reviews.js): homepage "Kind words", ★ tag on gallery tiles, review under the photo in the lightbox */
+.rv-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rv{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.rv-ph{display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden}
+.rv-ph img{width:100%;height:100%;object-fit:cover}
+.rv p{font-size:1rem;line-height:1.5;white-space:pre-line}
+.rv cite{display:block;margin-top:8px;font-style:normal;color:var(--accent2);font-weight:600;font-size:.9rem}
+.rv-stars{color:#ffc94d;letter-spacing:2px;font-size:.95rem}.rv-stars i{font-style:normal;color:var(--line)}
+@media (max-width:1000px){.rv-list{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.rv-list{grid-template-columns:1fr}}
+.g-grid .rv-tag{position:absolute;left:10px;top:10px;background:color-mix(in srgb,var(--bg) 80%,transparent);color:#ffc94d;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.lb-review{max-width:min(640px,92vw);text-align:center}
+.lb-review .rv{background:transparent;border:0;padding:4px 0;gap:4px}
+.lb-review .rv p{color:#f1f3f8;font-size:.98rem}
+.lb.has-review img{max-height:64vh}
+.lb-rate{color:#cfd3dc;font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.lb-rate:hover{color:#fff}
+.lb-rate:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.lb-review[hidden],.lb-rate[hidden]{display:none}
+@media (max-width:640px){.lb figure{padding-bottom:84px}.lb.has-review img{max-height:52vh}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* sports band */
@@ -314,6 +334,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </div></section>
 
+<section id="kind-words" style="padding-top:0" hidden><div class="wrap">
+  <div class="head"><h2>Kind words</h2><p>Real clients, on their own photos. Tap a photo to see it in the gallery.</p></div>
+  <div class="rv-list"></div>
+</div></section>
+
 <section id="book" style="padding-top:0"><div class="wrap">
   <div class="head"><h2>Book a session</h2><p>Tell me what you're planning. I'll reply within a day with dates and a quote.</p></div>
   <!-- FORM (live 11/22): no email service yet (would put Dan's email on a 3rd-party service: needs his OK). On send it builds the request text, copies it, and opens an Instagram DM to @kodak_dann. -->
@@ -332,6 +357,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <span><a href="https://www.instagram.com/kodak_dann/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@kodakdann" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@kodak_dann" target="_blank" rel="noopener">TikTok</a></span>
 </div></footer>
 
+<script src="work/reviews.js" defer></script>
 <script>
 /* booking form -> Instagram DM (copies the request first) */
 document.getElementById('bookform').addEventListener('submit', function(e){

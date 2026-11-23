@@ -1,0 +1,7 @@
+{
+  "_help": "Reviews. sheetCsvUrl = the 'Approved' tab of the reviews Google Sheet, published to the web as CSV (only approved rows are in it). formUrl + fields = the Google Form and its entry ids for the prefilled gallery/photo. manual = reviews typed in by hand (same shape: name, gallery, photo, text, stars, date YYYY-MM-DD). Changes here go live with the next push; Sheet approvals go live on their own within ~5 minutes.",
+  "formUrl": "",
+  "fields": { "gallery": "", "photo": "" },
+  "sheetCsvUrl": "",
+  "manual": []
+}

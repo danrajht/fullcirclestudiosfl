@@ -146,6 +146,26 @@ section{padding:96px 0}
 .lb-next{right:16px;top:50%;transform:translateY(-50%)}
 @media (max-width:640px){.lb img{max-width:100vw;max-height:78vh;border-radius:0}.lb-prev,.lb-next{top:auto;bottom:18px;transform:none}.lb-prev{left:calc(50% - 70px)}.lb-next{right:calc(50% - 70px)}}
 html.lb-open{overflow:hidden}
+/* reviews (work/reviews.js): homepage "Kind words", ★ tag on gallery tiles, review under the photo in the lightbox */
+.rv-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rv{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.rv-ph{display:block;aspect-ratio:4/3;border-radius:12px;overflow:hidden}
+.rv-ph img{width:100%;height:100%;object-fit:cover}
+.rv p{font-size:1rem;line-height:1.5;white-space:pre-line}
+.rv cite{display:block;margin-top:8px;font-style:normal;color:var(--accent2);font-weight:600;font-size:.9rem}
+.rv-stars{color:#ffc94d;letter-spacing:2px;font-size:.95rem}.rv-stars i{font-style:normal;color:var(--line)}
+@media (max-width:1000px){.rv-list{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.rv-list{grid-template-columns:1fr}}
+.g-grid .rv-tag{position:absolute;left:10px;top:10px;background:color-mix(in srgb,var(--bg) 80%,transparent);color:#ffc94d;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.lb-review{max-width:min(640px,92vw);text-align:center}
+.lb-review .rv{background:transparent;border:0;padding:4px 0;gap:4px}
+.lb-review .rv p{color:#f1f3f8;font-size:.98rem}
+.lb.has-review img{max-height:64vh}
+.lb-rate{color:#cfd3dc;font-size:.82rem;text-decoration:underline;text-underline-offset:3px}
+.lb-rate:hover{color:#fff}
+.lb-rate:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.lb-review[hidden],.lb-rate[hidden]{display:none}
+@media (max-width:640px){.lb figure{padding-bottom:84px}.lb.has-review img{max-height:52vh}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* sports band */
@@ -208,7 +228,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
 </head>
-<body class="gallery-page">
+<body class="gallery-page" data-slug="weddings">
 <nav><div class="wrap">
   <a href="../../" class="logo"><span class="ring"></span>FULL CIRCLE STUDIOS</a>
   <ul><li><a href="../../#services">Services</a></li><li><a href="../../#work">Work</a></li><li><a href="../../#sports">Sports</a></li><li><a href="../../#pricing">Pricing</a></li><li><a href="../../#about">About</a></li></ul>
@@ -237,7 +257,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Weddings + Celebrations photo viewer" hidden>
   <button class="lb-x" type="button" aria-label="Close">×</button>
   <button class="lb-prev" type="button" aria-label="Previous photo">‹</button>
-  <figure><img alt=""><figcaption aria-live="polite"></figcaption></figure>
+  <figure><img alt=""><figcaption aria-live="polite"></figcaption><div class="lb-review" hidden></div><a class="lb-rate" hidden target="_blank" rel="noopener">Is this you? Leave a review →</a></figure>
   <button class="lb-next" type="button" aria-label="Next photo">›</button>
 </div>
 
@@ -248,5 +268,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <script type="application/json" id="photos">[]</script>
 <script src="../gallery.js" defer></script>
+<script src="../reviews.js" defer></script>
 </body>
 </html>

@@ -25,6 +25,9 @@
     cap.textContent = (cur + 1) + ' / ' + data.length;
     var one = data.length < 2; btnP.hidden = one; btnN.hidden = one;
     if (!one) { preload(cur + 1); preload(cur - 1); }
+    /* the address bar becomes a share link for this exact photo (…/work/portraits/#p=02-ig01) */
+    try { history.replaceState(null, '', '#p=' + p.b); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('lb:show', { detail: { i: cur, b: p.b } }));
   }
   function open(i, from) {
     opener = from || document.activeElement;
@@ -34,8 +37,19 @@
   function close() {
     lb.hidden = true; document.documentElement.classList.remove('lb-open'); setInert(false);
     img.removeAttribute('src'); cur = -1;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
     if (opener && opener.focus) opener.focus();
   }
+  /* opened from a shared link (#p=<photo>): show that photo straight away */
+  function fromHash() {
+    var m = /^#p=([\w-]+)$/.exec(location.hash); if (!m) return;
+    for (var k = 0; k < data.length; k++) if (data[k].b === m[1]) {
+      if (!lb.hidden) { if (k !== cur) show(k); return; }
+      open(k, document.querySelector('.g-grid .ph[data-i="' + k + '"]')); return;
+    }
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
 
   document.querySelectorAll('.g-grid .ph[data-i]').forEach(function (b) {
     b.addEventListener('click', function () { open(+b.dataset.i, b); });
@@ -51,7 +65,7 @@
     else if (e.key === 'ArrowLeft' && data.length > 1) { e.preventDefault(); show(cur - 1); }
     else if (e.key === 'ArrowRight' && data.length > 1) { e.preventDefault(); show(cur + 1); }
     else if (e.key === 'Tab') {                       /* focus trap: cycle through the visible buttons */
-      var f = [btnX, btnP, btnN].filter(function (x) { return !x.hidden; });
+      var f = [btnX, btnP, btnN, lb.querySelector('.lb-rate')].filter(function (x) { return x && !x.hidden; });
       var k = f.indexOf(document.activeElement);
       e.preventDefault();
       f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
