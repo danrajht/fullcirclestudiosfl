@@ -2,6 +2,6 @@
   "_help": "Reviews. sheetCsvUrl = the 'Approved' tab of the reviews Google Sheet, published to the web as CSV (only approved rows are in it). formUrl + fields = the Google Form and its entry ids for the prefilled gallery/photo. manual = reviews typed in by hand (same shape: name, gallery, photo, text, stars, date YYYY-MM-DD). Changes here go live with the next push; Sheet approvals go live on their own within ~5 minutes.",
   "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScIYcxmXCikt9sqO1jqMJYW8LFhIGkytodSSQMl-lFqeJhCCw/viewform",
   "fields": { "gallery": "entry.285615306", "photo": "entry.1435656907" },
-  "sheetCsvUrl": "",
+  "sheetCsvUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJG13hSWuNP0styiBXkD4d9YWpLET8YANwRsnkofACHW5u4-Jnv92OdgWz_dU5pdq4GTQi7GJiXbqk/pub?gid=2104683767&single=true&output=csv",
   "manual": []
 }
