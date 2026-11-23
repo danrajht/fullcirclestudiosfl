@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" data-theme="blue"><!-- chosen look (Dan + sister 11/22): Cinematic Blue; ?theme=... still previews the others -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#04060c">
+<title>Full Circle Studios | Photo + Video, South Florida</title>
+<meta name="description" content="Full Circle Studios: sports films, player highlight reels, family portraits, weddings and events in South Florida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0c0e; --bg2:#151519; --card:#1b1b20; --line:#2a2a31;
+  --text:#f3f1ec; --muted:#a3a1a8; --accent:#ff6a2b; --accent2:#ffb347; --on-accent:#120a05;
+}
+/* color samples: ?theme=gold | teal | red | light */
+:root[data-theme="gold"]{--bg:#0b0b0a;--bg2:#141412;--card:#1a1916;--line:#2c2a24;--accent:#d4af37;--accent2:#f0d98c;--on-accent:#141006}
+:root[data-theme="teal"]{--bg:#081114;--bg2:#0e1a1e;--card:#122228;--line:#1f3640;--text:#eef6f6;--muted:#9bb3b8;--accent:#2ec4b6;--accent2:#a8f0e6;--on-accent:#04201d}
+:root[data-theme="red"]{--bg:#0a0a0a;--bg2:#131313;--card:#1a1a1a;--line:#2b2b2b;--text:#f5f5f5;--muted:#a0a0a0;--accent:#e63946;--accent2:#ffffff;--on-accent:#ffffff}
+:root[data-theme="light"]{--bg:#f4efe6;--bg2:#ebe4d8;--card:#fbf8f2;--line:#d9cfbf;--text:#16130f;--muted:#6b6358;--accent:#1f4e79;--accent2:#b07d2b;--on-accent:#ffffff}
+/* round 2 (sister's notes 11/22): duo = orange + teal as one palette; blue = cinematic, one color in shades; warm = earthy/editorial */
+:root{--ring:var(--accent);--glow2:transparent;--band1:var(--accent);--band2:color-mix(in srgb,var(--accent) 60%,var(--accent2));--on-band:var(--on-accent)}
+:root[data-theme="duo"]{--bg:#0a1216;--bg2:#0f1b21;--card:#13232a;--line:#20363f;--text:#f5efe6;--muted:#9fb1b5;--accent:#ff6a2b;--accent2:#35c2b3;--on-accent:#140a04;--ring:#35c2b3;--glow2:#35c2b333;--band1:#0f5f5a;--band2:#0a1216;--on-band:#f5efe6}
+:root[data-theme="blue"]{--bg:#04060c;--bg2:#08101f;--card:#0c1630;--line:#1a2950;--text:#edf1fa;--muted:#8d9bbb;--accent:#2d6bff;--accent2:#a9bde6;--on-accent:#ffffff;--ring:#4f86ff;--glow2:#0b2a8a44;--band1:#0b2a8a;--band2:#04060c;--on-band:#edf1fa}
+:root[data-theme="warm"]{--bg:#ece4d8;--bg2:#e2d8c8;--card:#f5efe6;--line:#d2c5b1;--text:#1e1b17;--muted:#6e6456;--accent:#2f4a3a;--accent2:#b8694a;--on-accent:#f5efe6;--ring:#b8694a;--glow2:#b8694a22;--band1:#2f4a3a;--band2:#22372b;--on-band:#f5efe6}
+:root[data-theme="warm"] h1,:root[data-theme="warm"] h2,:root[data-theme="warm"] h3,:root[data-theme="warm"] .logo,:root[data-theme="warm"] .price .amt,:root[data-theme="warm"] .card-mock .name{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;letter-spacing:0}
+:root[data-theme="warm"] .hero h1{font-style:italic}
+:root[data-theme="blue"] h1,:root[data-theme="blue"] h2{text-transform:uppercase;letter-spacing:.02em}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:"Archivo Black",Inter,sans-serif;font-weight:400;letter-spacing:-.01em;line-height:1.05}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:20;background:linear-gradient(color-mix(in srgb,var(--bg) 92%,transparent),transparent)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Archivo Black";font-size:1.05rem;letter-spacing:.02em}
+.ring{width:30px;height:30px;border-radius:50%;border:3px solid var(--accent);position:relative}
+.ring::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--accent2)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.92rem;color:var(--muted)}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);font-weight:600;padding:12px 22px;border-radius:999px;font-size:.95rem;transition:transform .15s,background .15s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+@media (max-width:760px){nav ul{display:none}}
+@media (max-width:420px){.logo{font-size:.85rem;gap:8px}.ring{width:24px;height:24px}nav .btn{padding:10px 18px}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden}
+.hero-media{position:absolute;inset:0;background:
+  radial-gradient(60% 50% at 75% 30%,#ff6a2b33,transparent 70%),
+  radial-gradient(50% 60% at 15% 80%,#ffb34722,transparent 70%),
+  linear-gradient(160deg,#18181d,#0c0c0e 60%)}
+.hero-media video{width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-media{background:radial-gradient(60% 50% at 75% 35%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),radial-gradient(50% 60% at 15% 85%,var(--glow2),transparent 70%),linear-gradient(160deg,var(--bg2),var(--bg) 60%)!important}
+.orbit{position:absolute;right:6vw;top:50%;transform:translateY(-50%);width:min(46vw,560px);aspect-ratio:1}
+.orbit .ringline{position:absolute;inset:0;border-radius:50%;border:2px solid color-mix(in srgb,var(--ring) 45%,transparent);animation:spin 30s linear infinite}
+.orbit .ringline::after{content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;background:var(--ring);box-shadow:0 0 24px var(--ring)}
+.orbit .photos{position:absolute;inset:7%;border-radius:50%;overflow:hidden;background:var(--bg2)}
+.orbit .photos img,.orbit .photos video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.2s ease,transform 4.5s ease}
+.orbit .photos img.on,.orbit .photos video.on{opacity:1;transform:scale(1)}
+.orbit .photos video{transform:none}
+.orbit .label.hide{opacity:0}
+.orbit .label{transition:opacity .4s}
+.orbit .label{position:absolute;left:50%;bottom:2%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);font-weight:600;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 24px #0006}
+.orbit .dots{position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);display:flex;gap:8px}
+.orbit .dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.orbit .dots i.on{background:var(--accent)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orbit .ringline{animation:none}}
+@media (max-width:860px){.hero{align-items:start}.orbit{position:relative;right:auto;top:auto;transform:none;width:min(78vw,380px);margin:96px auto 60px}}
+.hero .wrap{position:relative;padding:0 0 12vh}
+.hero h1{font-size:clamp(2.6rem,8vw,6.2rem);max-width:12ch;margin:14px 0 18px}
+.hero h1 span{color:var(--accent)}
+.hero p{max-width:46ch;color:var(--text);opacity:.85;font-size:1.08rem;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* sections */
+section{padding:96px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.head h2{font-size:clamp(2rem,4.5vw,3.2rem);max-width:16ch}
+.head p{color:var(--muted);max-width:42ch}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--accent);transform:translateY(-3px)}
+.svc .n{font-family:"Archivo Black";color:var(--accent);font-size:.9rem}
+.svc h3{font-size:1.35rem}
+.svc p{color:var(--muted);font-size:.95rem}
+.svc ul{list-style:none;font-size:.9rem;color:var(--text);opacity:.9;display:grid;gap:4px;margin-top:4px}
+.svc li::before{content:"— ";color:var(--accent)}
+
+/* work */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:170px;gap:10px}
+.tile{border-radius:14px;overflow:hidden;position:relative;background:var(--bg2);border:1px solid var(--line)}
+.tile .ph{position:absolute;inset:0;display:grid;place-items:center;color:#5d5b63;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;background:
+  linear-gradient(135deg,#1d1d23,#121216)}
+.tile img,.tile video{width:100%;height:100%;object-fit:cover}
+.tile .tag{position:absolute;left:12px;bottom:10px;font-size:.75rem;background:#0c0c0ecc;color:#fff;padding:4px 10px;border-radius:999px}
+.t1{grid-column:span 4;grid-row:span 2}.t2{grid-column:span 2;grid-row:span 2}
+.t3,.t4,.t5{grid-column:span 2}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.t1{grid-column:span 2}.t2{grid-column:span 1;grid-row:span 1}.t3,.t4,.t5{grid-column:span 1}}
+
+/* sports band */
+.band{background:linear-gradient(120deg,var(--band1),var(--band2));color:var(--on-band)}
+.band .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.band h2{font-size:clamp(2rem,5vw,3.4rem)}
+.band p{font-size:1.05rem;margin:16px 0 22px;max-width:48ch}
+.band .eyebrow{color:inherit;opacity:.75}
+.band .btn{background:#111;color:#fff}
+:root[data-theme="duo"] .band .btn,:root[data-theme="blue"] .band .btn,:root[data-theme="warm"] .band .btn{background:var(--accent2);color:#0b0b0b}
+.card-mock{aspect-ratio:3/4;max-width:320px;justify-self:center;border-radius:20px;background:#111;color:#f3f1ec;padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 60px #0005;transform:rotate(3deg)}
+.card-mock .top{display:flex;justify-content:space-between;font-size:.75rem;color:var(--accent2);letter-spacing:.14em;text-transform:uppercase}
+.card-mock .photo{flex:1;margin:14px 0;border-radius:12px;background:#222 url(media/g8.jpg) center/cover}
+.card-mock .name{font-family:"Archivo Black";font-size:1.6rem}
+.card-mock .stats{display:flex;gap:16px;font-size:.8rem;color:#a3a1a8;margin-top:6px}
+.card-mock .stats b{display:block;color:#fff;font-size:1.1rem}
+@media (max-width:760px){.band .wrap{grid-template-columns:1fr}}
+
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.price{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--bg2)}
+.price h3{font-size:1.1rem;margin-bottom:6px}
+.price .amt{font-family:"Archivo Black";font-size:2.2rem;color:var(--accent);margin:8px 0}
+.price .amt small{font-family:Inter;font-size:.85rem;color:var(--muted)}
+.price p{color:var(--muted);font-size:.92rem}
+.note{color:var(--muted);font-size:.9rem;margin-top:20px}
+
+/* about */
+.about{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+/* Dan's profile photo: original he sent 11/22 (ig\dan-original.jpg), cropped square 600px -> media\dan.jpg */
+.about .avatar{width:170px;aspect-ratio:1;border-radius:50%;padding:8px;border:2px solid color-mix(in srgb,var(--ring) 60%,transparent);box-shadow:0 0 40px color-mix(in srgb,var(--ring) 25%,transparent)}
+.about .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.about .portrait{aspect-ratio:4/5;border-radius:20px;background:linear-gradient(160deg,#1f1f25,#121216);border:1px solid var(--line);display:grid;place-items:center;color:#5d5b63;font-size:.8rem;letter-spacing:.12em}
+.about h2{font-size:clamp(2rem,4.5vw,3rem);margin:12px 0 18px}
+.about p{color:var(--text);opacity:.85;margin-bottom:14px;max-width:56ch}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+/* book */
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+form .full{grid-column:1/-1}
+label{font-size:.82rem;color:var(--muted);display:grid;gap:6px}
+input,select,textarea{background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 14px;font:inherit;font-size:16px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+textarea{min-height:110px;resize:vertical}
+@media (max-width:640px){form{grid-template-columns:1fr;padding:20px}}
+
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#top" class="logo"><span class="ring"></span>FULL CIRCLE STUDIOS</a>
+  <ul><li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#sports">Sports</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#about">About</a></li></ul>
+  <a href="#book" class="btn">Book</a>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="hero-media">
+    <!-- HERO LOOP: drop a muted 8-12 s loop here (Higgsfield or his own footage) -->
+  </div>
+  <div class="orbit" aria-label="Our services">
+    <div class="ringline" aria-hidden="true"></div>
+    <div class="photos">
+      <!-- hero clip: Dan's Gus game-winner edit (Week 4 Game 2, posted 10/19-20), first 11 s, square crop, muted -->
+      <video src="media/hero-gus.mp4" poster="media/hero-gus.jpg" muted playsinline preload="auto" data-label="Game Films" aria-label="Game-winning shot with a PERFECT release meter" class="on"></video>
+      <img src="media/c-family.jpg" alt="Group portrait outdoors" data-label="Family + Friends">
+      <img src="media/c-portraits.jpg" alt="Portrait" data-label="Portraits">
+      <img src="media/c-events.jpg" alt="Guitarist on stage" data-label="Concerts + Events">
+      <img src="media/c-sports.jpg" alt="Basketball game" data-label="Sports">
+      <img src="media/c-culture.jpg" alt="Dancers at a festival" data-label="Weddings + Celebrations">
+      <img src="media/c-content.jpg" alt="Drift car" data-label="Content">
+      <img src="media/c-films.jpg" alt="Sunset road" data-label="Short Films">
+    </div>
+    <div class="label" id="svcLabel">Sports</div>
+    <div class="dots" id="dots"></div>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Photo + Video + Film · South Florida</div>
+    <h1>Every moment, <span>full circle.</span></h1>
+    <p>Game films, family portraits, weddings, content and short films. From the first shot to the final cut, shot and edited by Dan.</p>
+    <div class="cta"><a href="#book" class="btn">Book a session →</a><a href="#work" class="btn ghost">See the work</a></div>
+  </div>
+</header>
+
+<section id="services"><div class="wrap">
+  <div class="head"><h2>What we shoot</h2><p>One photographer, one look, start to finish. You get the shoot, the edit, and files ready to post.</p></div>
+  <div class="services">
+    <div class="svc"><span class="n">01</span><h3>Sports</h3><p>High school and league games, filmed and cut fast.</p><ul><li>Full game film</li><li>Highlight reels</li><li>Player mixtapes + cards</li><li>Behind the scenes</li></ul></div>
+    <div class="svc"><span class="n">02</span><h3>Family + Portraits</h3><p>Holiday photos, family sessions, senior pictures.</p><ul><li>Golden-hour sessions</li><li>Edited gallery</li><li>Print-ready files</li></ul></div>
+    <div class="svc"><span class="n">03</span><h3>Weddings + Events</h3><p>Weddings, vow renewals, birthdays, parties.</p><ul><li>Photo + film</li><li>Highlight film</li><li>Same-week teaser</li></ul></div>
+    <div class="svc"><span class="n">04</span><h3>Content</h3><p>Reels and short-form for creators and local businesses.</p><ul><li>Vertical edits</li><li>Intros + motion graphics</li><li>Monthly packages</li></ul></div>
+    <div class="svc"><span class="n">05</span><h3>Short Films</h3><p>Original stories, music videos and poem films, written, shot and cut in house.</p><ul><li>Concept to final cut</li><li>Music videos</li><li>Branded stories</li></ul></div>
+  </div>
+</div></section>
+
+<section id="work" style="padding-top:0"><div class="wrap">
+  <div class="head"><h2>Recent work</h2><p>A few favorites. More on Instagram and YouTube.</p></div>
+  <div class="grid">
+    <div class="tile t1"><img src="media/g11.jpg" alt="Basketball game" loading="lazy"><span class="tag">Sports</span></div>
+    <div class="tile t2"><img src="media/g1.jpg" alt="Portrait" loading="lazy"><span class="tag">Portraits</span></div>
+    <div class="tile t3"><img src="media/g20.jpg" alt="Concert" loading="lazy"><span class="tag">Concerts</span></div>
+    <div class="tile t4"><img src="media/g21.jpg" alt="Baseball game" loading="lazy"><span class="tag">Sports</span></div>
+    <div class="tile t5"><img src="media/g14.jpg" alt="Portrait" loading="lazy"><span class="tag">Portraits</span></div>
+  </div>
+</div></section>
+
+<section class="band" id="sports"><div class="wrap">
+  <div>
+    <div class="eyebrow">For players + parents</div>
+    <h2>Your season, on film.</h2>
+    <p>Every game filmed. Highlight reels for the team, mixtapes and player cards for each athlete, with real names, numbers and stats. Built for recruiting and for posting.</p>
+    <a href="#book" class="btn">Ask about a season package →</a>
+  </div>
+  <div class="card-mock" aria-label="Sample player card">
+    <div class="top"><span>Lions · 26-27</span><span>#00</span></div>
+    <div class="photo"></div>
+    <div><div class="name">Player Name</div>
+      <div class="stats"><span><b>00.0</b>PTS</span><span><b>0.0</b>REB</span><span><b>0.0</b>AST</span></div></div>
+  </div>
+</div></section>
+
+<section id="pricing"><div class="wrap">
+  <div class="head"><h2>Starting prices</h2><p>Every shoot is a little different. These are starting points; message for a quote.</p></div>
+  <div class="prices">
+    <div class="price"><h3>Family / Holiday</h3><div class="amt">$300 <small>/ session</small></div><p>1 hour, 1 location, about 30 edited photos, online gallery.</p></div>
+    <div class="price"><h3>Mini Session</h3><div class="amt">$175</div><p>30 minutes, about 15 edited photos.</p></div>
+    <div class="price"><h3>Game Coverage</h3><div class="amt">$250 <small>/ game</small></div><p>Full game film + highlight reel + behind-the-scenes reel. Season packages available.</p></div>
+    <div class="price"><h3>Player Mixtape</h3><div class="amt">$100</div><p>One player's best plays, vertical + widescreen, with name and number.</p></div>
+    <div class="price"><h3>Weddings + Vow Renewals</h3><div class="amt">$3,000<small>+</small></div><p>Photo + film, 4-6 hours, gallery and highlight film.</p></div>
+  </div>
+  <p class="note">A deposit holds your date. Returning clients get a loyalty discount.</p>
+</div></section>
+
+<section id="about" style="padding-top:0"><div class="wrap about">
+  <div class="avatar"><img src="media/dan.jpg" alt="Dan, founder of Full Circle Studios" width="150" height="150"></div>
+  <div>
+    <div class="eyebrow">About</div>
+    <h2>Hi, I'm Dan.</h2>
+    <p>I've been filming my basketball league, bowling nights, trips and the people around me for years. Full Circle Studios is where all of that comes together: real moments, edited with care, delivered fast.</p>
+    <p>Based in West Palm Beach, shooting all over Palm Beach and Broward.</p>
+  </div>
+</div></section>
+
+<section id="book" style="padding-top:0"><div class="wrap">
+  <div class="head"><h2>Book a session</h2><p>Tell me what you're planning. I'll reply within a day with dates and a quote.</p></div>
+  <!-- FORM (live 11/22): no email service yet (would put Dan's email on a 3rd-party service: needs his OK). On send it builds the request text, copies it, and opens an Instagram DM to @kodak_dann. -->
+  <form id="bookform">
+    <label>Name<input name="name" required autocomplete="name"></label>
+    <label>Phone or email<input name="contact" required></label>
+    <label>What's the shoot?<select name="type"><option>Sports / game</option><option>Family / holiday</option><option>Wedding / vow renewal</option><option>Event</option><option>Content</option><option>Something else</option></select></label>
+    <label>Date (if you know it)<input name="date" type="date"></label>
+    <label class="full">Details<textarea name="details" placeholder="Where, how many people, anything special..."></textarea></label>
+    <div class="full"><button class="btn" type="submit">Send request →</button> <span id="sent" hidden style="margin-left:12px;color:var(--accent2)">Copied! Paste it in the Instagram chat that just opened.</span></div>
+  </form>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 Full Circle Studios LLC · West Palm Beach, FL</span>
+  <span><a href="https://www.instagram.com/kodak_dann/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@kodakdann" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.tiktok.com/@kodak_dann" target="_blank" rel="noopener">TikTok</a></span>
+</div></footer>
+
+<script>
+/* booking form -> Instagram DM (copies the request first) */
+document.getElementById('bookform').addEventListener('submit', function(e){
+  e.preventDefault(); var f = this, g = function(n){ return (f.elements[n].value || '').trim(); };
+  var msg = 'Booking request (fullcirclestudiosfl.com)\nName: ' + g('name') + '\nContact: ' + g('contact') + '\nShoot: ' + g('type') +
+            (g('date') ? '\nDate: ' + g('date') : '') + (g('details') ? '\nDetails: ' + g('details') : '');
+  /* copy synchronously (still inside the tap) so phones don't block the new tab */
+  var ta = document.createElement('textarea'); ta.value = msg; ta.setAttribute('readonly',''); ta.style.cssText = 'position:fixed;opacity:0;top:0';
+  document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, msg.length);
+  try { document.execCommand('copy'); } catch(err) {} document.body.removeChild(ta);
+  document.getElementById('sent').hidden = false;
+  window.open('https://ig.me/m/kodak_dann', '_blank', 'noopener');
+});
+(function(){
+  var t = new URLSearchParams(location.search).get('theme');
+  if (t) document.documentElement.setAttribute('data-theme', t);
+  /* ?at=sports : screenshot helper, hides everything above that section (headless Edge ignores #hash) */
+  var at = new URLSearchParams(location.search).get('at'), el = at && document.getElementById(at);
+  if (el) { var s = document.getElementById('top'); while (s && s !== el) { if (s.tagName !== 'NAV') s.style.display = 'none'; s = s.nextElementSibling; } el.style.paddingTop = '96px'; }
+  /* slides = the Gus clip (plays through once, label hidden so it doesn't cover his captions) + the photos (3.2 s each) */
+  var imgs = [].slice.call(document.querySelectorAll('.orbit .photos img, .orbit .photos video'));
+  var label = document.getElementById('svcLabel'), dots = document.getElementById('dots'), i = 0, timer;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  imgs.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  function show(n){
+    imgs.forEach(function(im,k){ im.classList.toggle('on',k===n); dots.children[k].classList.toggle('on',k===n); if (im.tagName==='VIDEO' && k!==n) im.pause(); });
+    var s = imgs[n], vid = s.tagName === 'VIDEO';
+    label.textContent = s.dataset.label; label.classList.toggle('hide', vid && !still);
+    if (vid && !still) { try { s.currentTime = 0; var p = s.play(); if (p && p.catch) p.catch(function(){}); } catch(e){} }
+  }
+  function next(){ i=(i+1)%imgs.length; show(i); timer = setTimeout(next, imgs[i].tagName==='VIDEO' ? 11000 : 3200); }
+  var hold = new URLSearchParams(location.search).get('slide');
+  if (hold !== null) { show(+hold); return; }
+  show(0);
+  if (!still) timer = setTimeout(next, imgs[0].tagName==='VIDEO' ? 11000 : 3200);
+})();
+</script>
+</body>
+</html>
