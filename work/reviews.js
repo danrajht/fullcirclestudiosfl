@@ -24,17 +24,32 @@
     return { name: String(r.name || '').trim().slice(0, 40), gallery: String(r.gallery || '').trim().toLowerCase(),
              photo: String(r.photo || '').trim().toLowerCase(), text: String(r.text || '').trim().slice(0, 600), stars: stars, date: r.date || '' };
   }
+  /* Clients can type over the prefilled gallery (Pat 11/23 wrote "Car Photo Shoot" instead of "content"), so a review whose
+     gallery doesn't hold its photo moves to the one gallery that does. work/photos.json = { slug: [photo ids] }, written by
+     tools/build.mjs on every build. No index, or the photo in 0 or 2+ galleries: the review stays as typed. */
+  function holds(idx, slug, photo) { var a = Object.prototype.hasOwnProperty.call(idx, slug) && idx[slug]; return Array.isArray(a) && a.indexOf(photo) >= 0; }
+  function fixGallery(list, idx) {
+    if (!idx || typeof idx !== 'object') return list;
+    list.forEach(function (r) {
+      if (!r.photo || holds(idx, r.gallery, r.photo)) return;
+      var hits = Object.keys(idx).filter(function (s) { return holds(idx, s, r.photo); });
+      if (hits.length === 1) r.gallery = hits[0];
+    });
+    return list;
+  }
   function load(cb) {
+    var idxP = fetch(base + 'photos.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    function done(list, cfg) { idxP.then(function (idx) { cb(fixGallery(list, idx), cfg); }); }
     fetch(base + 'reviews.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (cfg) {
       var list = (cfg.manual || []).map(clean);
-      if (!cfg.sheetCsvUrl) return cb(list, cfg);
+      if (!cfg.sheetCsvUrl) return done(list, cfg);
       fetch(cfg.sheetCsvUrl).then(function (r) { return r.text(); }).then(function (t) {
         parseCSV(t).slice(1).forEach(function (c) {
           if (c.length >= 5) list.push(clean({ date: toDate(c[0]), name: c[1], gallery: c[2], photo: c[3], text: c[4], stars: c[5] }));
         });
-        cb(list, cfg);
-      }).catch(function () { cb(list, cfg); });
-    }).catch(function () { cb([], {}); });
+        done(list, cfg);
+      }).catch(function () { done(list, cfg); });
+    }).catch(function () { done([], {}); });
   }
   function starHTML(n) { return n ? '<span class="rv-stars" aria-label="' + n + ' out of 5 stars">' + '★★★★★'.slice(0, n) + '<i>' + '★★★★★'.slice(n) + '</i></span>' : ''; }
   function card(r, el, withPhoto) {
